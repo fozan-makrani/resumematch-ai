@@ -1,7 +1,8 @@
 const express = require("express");
 const cors = require("cors");
 const errorHandler = require("./middleware/errorHandler");
-const authRoutes = require('./routes/authRoutes')
+const authRoutes = require("./routes/authRoutes");
+const matchRoutes = require("./routes/matchRoutes");
 
 const app = express();
 
@@ -16,8 +17,8 @@ app.get("/api/health", (req, res) => {
 });
 
 // Routes will be mounted here as we build them:
-app.use('/api/auth', authRoutes);
-// app.use('/api/match', require('./routes/matchRoutes'));
+app.use("/api/auth", authRoutes);
+app.use("/api/match", matchRoutes);
 
 // 404 handler for unmatched routes
 app.use((req, res) => {
